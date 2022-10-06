@@ -36,7 +36,7 @@ function App() {
   const [, setRandomNumber] = useState(0)
   const [accentColor, setAccentColor] = useState('#282c34')
 
-  // async Function to import Quotes from API
+  // async Function to import Quotes
   const fetchQuotes = async(url) => {
     const response = await fetch(url)
     const parsedJSON = await response.json()
@@ -60,6 +60,7 @@ function App() {
     setAuthor(quotesArray[randomInteger].author)
   })
 
+  //Return
   return (
     <div className="App">
       <header className="App-header" style={{backgroundColor: accentColor}}>
@@ -74,10 +75,12 @@ function App() {
             -{author}
           </p>
 
+          {/* Link to post a quote on twitter */}
           <a id="tweet-quote" href= {encodeURI(`https://twitter.com/intent/tweet?text=${quote} -${author}`)} style={{backgroundColor:accentColor}}>
             <FontAwesomeIcon icon={faTwitter} />
           </a>
 
+          {/* Button to generate a new quote */}
           <button id="new-quote" onClick={() => getQuote()} style={{backgroundColor:accentColor}}><a id="quote-tag">New Quote</a></button>
           
         </div>
